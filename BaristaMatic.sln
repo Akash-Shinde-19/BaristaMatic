@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaristaMatic", "BaristaMatic\BaristaMatic.csproj", "{EDAB2DAD-C019-45AF-82F0-5C6B8867EFC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestBaristaMatic", "UnitTestBaristaMatic\UnitTestBaristaMatic.csproj", "{A76F3BE2-4241-46EB-BEFD-FDDC07CC7774}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDAB2DAD-C019-45AF-82F0-5C6B8867EFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDAB2DAD-C019-45AF-82F0-5C6B8867EFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDAB2DAD-C019-45AF-82F0-5C6B8867EFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDAB2DAD-C019-45AF-82F0-5C6B8867EFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A76F3BE2-4241-46EB-BEFD-FDDC07CC7774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A76F3BE2-4241-46EB-BEFD-FDDC07CC7774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A76F3BE2-4241-46EB-BEFD-FDDC07CC7774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A76F3BE2-4241-46EB-BEFD-FDDC07CC7774}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {182A9E3F-C95E-4005-98D9-8FBCAAA94FAA}
+	EndGlobalSection
+EndGlobal
