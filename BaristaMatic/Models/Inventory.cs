@@ -110,9 +110,17 @@ namespace BaristaMatic.Models
         /// <returns>True/False</returns>
         public bool IsAvailable(string name, int requiredQty)
         {
-            IngredientsQty.TryGetValue(name, out var availableQty);
-            if (availableQty >= requiredQty)
-                return true;
+            try
+            {
+                IngredientsQty.TryGetValue(name, out var availableQty);
+                if (availableQty >= requiredQty)
+                    return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error Occurred While Checking Ingredient Availability: " + ex.Message);
+                return false;
+            }
             return false;
         }
 
@@ -123,9 +131,21 @@ namespace BaristaMatic.Models
         /// <param name="requiredQty">Required quantity of ingredient</param>
         public void DispenseIngredient(string name, int requiredQty)
         {
-            IngredientsQty.TryGetValue(name, out var availableQty);
-            if(availableQty > 0)
-                IngredientsQty[name] = availableQty - requiredQty;
+            try
+            {
+                if (requiredQty < 0)
+                {
+                    throw new Exception("Required quantity cannot be negative");
+                }
+                IngredientsQty.TryGetValue(name, out var availableQty);
+                if (availableQty > 0)
+                    IngredientsQty[name] = availableQty - requiredQty;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error Occurred While Dispensing Ingredient: " + ex.Message);
+                return;
+            }
         }
 
         /// <summary>
@@ -133,9 +153,17 @@ namespace BaristaMatic.Models
         /// </summary>
         public void Restock()
         {
-            foreach (KeyValuePair<string, Ingredient> entry in Ingredients)
+            try
             {
-                IngredientsQty[entry.Key] = MAX_QUANTITY;
+                foreach (KeyValuePair<string, Ingredient> entry in Ingredients)
+                {
+                    IngredientsQty[entry.Key] = MAX_QUANTITY;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error Occurred While Restocking Inventory: " + ex.Message);
+                return;
             }
         }
     }

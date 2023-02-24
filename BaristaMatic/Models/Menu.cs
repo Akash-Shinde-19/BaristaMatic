@@ -51,7 +51,15 @@ namespace BaristaMatic.Models
         {
             if(recipes.ContainsKey(name))
             {
-                recipes[name].MakeDrink();
+                try
+                {
+                    recipes[name].MakeDrink();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error Occurred While Making Drink: " + ex.Message);
+                    return;
+                }
             }
         }
 
@@ -63,7 +71,15 @@ namespace BaristaMatic.Models
         {
             if (index >= 0  && index < recipes.Count)
             {
-                recipes.ElementAt(index).Value.MakeDrink();
+                try
+                {
+                    recipes.ElementAt(index).Value.MakeDrink();
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine("Error Occurred While Making Drink: " + ex.Message);
+                    return;
+                }
             }
         }
     }

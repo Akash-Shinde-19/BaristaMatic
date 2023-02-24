@@ -42,7 +42,19 @@ namespace BaristaMatic.Models
         /// <param name="qty">Quantity ingredient</param>
         public void AddIngredient(string name, int qty)
         {
-            ingredients.Add(name, qty);
+            try
+            {
+                if (string.IsNullOrEmpty(name))
+                    throw new ArgumentNullException("name");
+                if (qty <= 0)
+                    throw new Exception("Invalid Quantity");
+                ingredients.Add(name, qty);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error Occurred While Adding Ingredient to Recipe: " + ex.Message);
+                return;
+            }
         }
 
         /// <summary>
@@ -52,12 +64,19 @@ namespace BaristaMatic.Models
         public double GetCost()
         {
             double cost = 0;
-            foreach (KeyValuePair<string, int> entry in ingredients)
+            try
             {
-                Ingredient ing = inventory.GetIngredient(entry.Key);
-                cost += ing.Cost * entry.Value;
+                foreach (KeyValuePair<string, int> entry in ingredients)
+                {
+                    Ingredient ing = inventory.GetIngredient(entry.Key);
+                    cost += ing.Cost * entry.Value;
+                }
+                cost = Math.Round(cost, 2);
             }
-            cost = Math.Round(cost, 2);
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error Occurred While Calculating Recipe/Drink Cost: " + ex.Message);
+            }
             return cost;
         }
 
